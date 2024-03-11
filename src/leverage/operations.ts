@@ -835,8 +835,8 @@ export const getAdjustLeverageIxns = async (props: {
       priceAinB,
       kamino,
       obligationTypeTagOverride,
-      userObligation
-    );
+      obligation: userObligation,
+    });
     ixns = res.ixns;
     lookupTablesAddresses = res.lookupTablesAddresses;
   } else {
@@ -856,8 +856,8 @@ export const getAdjustLeverageIxns = async (props: {
       isKtoken,
       kamino,
       obligationTypeTagOverride,
-      userObligation
-    );
+      obligation: userObligation,
+    });
     ixns = res.ixns;
     lookupTablesAddresses = res.lookupTablesAddresses;
   }
@@ -888,7 +888,7 @@ export const getIncreaseLeverageIxns = async (props: {
   priceAinB: PriceAinBProvider;
   kamino: Kamino | undefined;
   obligationTypeTagOverride: ObligationTypeTag;
-  obligation: KaminoObligation | null
+  obligation: KaminoObligation | null;
 }) => {
   const {
     connection,
@@ -907,7 +907,7 @@ export const getIncreaseLeverageIxns = async (props: {
     priceAinB,
     kamino,
     obligationTypeTagOverride = 1,
-    obligation
+    obligation,
   } = props;
   const collReserve = kaminoMarket.getReserveByMint(collTokenMint);
   const debtReserve = kaminoMarket.getReserveByMint(debtTokenMint);
@@ -1110,6 +1110,7 @@ export const getDecreaseLeverageIxns = async (props: {
   isKtoken: IsKtokenProvider;
   kamino: Kamino | undefined;
   obligationTypeTagOverride: ObligationTypeTag;
+  obligation: KaminoObligation | null;
 }) => {
   const {
     connection,
@@ -1126,7 +1127,7 @@ export const getDecreaseLeverageIxns = async (props: {
     isKtoken,
     kamino,
     obligationTypeTagOverride = 1,
-    obligation
+    obligation,
   } = props;
 
   console.log(
